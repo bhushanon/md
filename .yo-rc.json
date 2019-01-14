@@ -1,0 +1,40 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.md",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "5.3.4",
+    "applicationType": "monolith",
+    "baseName": "md",
+    "packageName": "com.md",
+    "packageFolder": "com/md",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZWM0ZGU4ZTRhNmYxODA5NzM5Y2E3OWVkMzkxMGZhYWUxMzJkNzViNzJjYmFmZmViY2Y5Y2VlMmRkOGUyOTE3ZDMxN2FkODlhZDg2ODU0NzQ4ZDlmYzExYjI0ZTY4ZmQzYTYzMjdlZGI2OTFkOTdkZDc4NWRkZGZhOWJkYzEwMjg=",
+    "clientFramework": "angularX",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": [
+      "en",
+      "hi",
+      "mr",
+      "ta"
+    ]
+  }
+}
