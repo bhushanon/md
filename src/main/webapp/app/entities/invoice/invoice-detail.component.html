@@ -36,4 +36,7 @@
             </button>
         </div>
     </div>
+    <div *ngIf="invoice">
+        <jhi-invoice-line-item [invoice]='invoice'></jhi-invoice-line-item>
+    </div>
 </div>

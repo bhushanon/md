@@ -16,6 +16,13 @@ const ENTITY_STATES = [...invoiceLineItemRoute, ...invoiceLineItemPopupRoute];
 
 @NgModule({
     imports: [MdSharedModule, RouterModule.forChild(ENTITY_STATES)],
+    exports: [
+        InvoiceLineItemComponent,
+        InvoiceLineItemDetailComponent,
+        InvoiceLineItemUpdateComponent,
+        InvoiceLineItemDeleteDialogComponent,
+        InvoiceLineItemDeletePopupComponent
+    ],
     declarations: [
         InvoiceLineItemComponent,
         InvoiceLineItemDetailComponent,

@@ -1,6 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
+import { MdInvoiceLineItemModule } from './../invoice-line-item/invoice-line-item.module';
 import { MdSharedModule } from 'app/shared';
 import {
     InvoiceComponent,
@@ -15,7 +15,7 @@ import {
 const ENTITY_STATES = [...invoiceRoute, ...invoicePopupRoute];
 
 @NgModule({
-    imports: [MdSharedModule, RouterModule.forChild(ENTITY_STATES)],
+    imports: [MdSharedModule, MdInvoiceLineItemModule, RouterModule.forChild(ENTITY_STATES)],
     declarations: [
         InvoiceComponent,
         InvoiceDetailComponent,
