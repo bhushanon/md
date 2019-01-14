@@ -5,6 +5,7 @@ import { MdSharedModule } from 'app/shared';
 import {
     InvoiceLineItemComponent,
     InvoiceLineItemDetailComponent,
+    InvoiceLineItemNewComponent,
     InvoiceLineItemUpdateComponent,
     InvoiceLineItemDeletePopupComponent,
     InvoiceLineItemDeleteDialogComponent,
@@ -19,6 +20,7 @@ const ENTITY_STATES = [...invoiceLineItemRoute, ...invoiceLineItemPopupRoute];
     exports: [
         InvoiceLineItemComponent,
         InvoiceLineItemDetailComponent,
+        InvoiceLineItemNewComponent,
         InvoiceLineItemUpdateComponent,
         InvoiceLineItemDeleteDialogComponent,
         InvoiceLineItemDeletePopupComponent
@@ -26,12 +28,14 @@ const ENTITY_STATES = [...invoiceLineItemRoute, ...invoiceLineItemPopupRoute];
     declarations: [
         InvoiceLineItemComponent,
         InvoiceLineItemDetailComponent,
+        InvoiceLineItemNewComponent,
         InvoiceLineItemUpdateComponent,
         InvoiceLineItemDeleteDialogComponent,
         InvoiceLineItemDeletePopupComponent
     ],
     entryComponents: [
         InvoiceLineItemComponent,
+        InvoiceLineItemNewComponent,
         InvoiceLineItemUpdateComponent,
         InvoiceLineItemDeleteDialogComponent,
         InvoiceLineItemDeletePopupComponent
