@@ -9,6 +9,7 @@ import { InvoiceLineItemService } from './invoice-line-item.service';
 import { InvoiceLineItemComponent } from './invoice-line-item.component';
 import { InvoiceLineItemDetailComponent } from './invoice-line-item-detail.component';
 import { InvoiceLineItemUpdateComponent } from './invoice-line-item-update.component';
+import { InvoiceLineItemNewComponent } from './invoice-line-item-new.component';
 import { InvoiceLineItemDeletePopupComponent } from './invoice-line-item-delete-dialog.component';
 import { IInvoiceLineItem } from 'app/shared/model/invoice-line-item.model';
 
@@ -18,6 +19,12 @@ export class InvoiceLineItemResolve implements Resolve<IInvoiceLineItem> {
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const id = route.params['id'] ? route.params['id'] : null;
+        const invoiceId = route.params['invoiceId'] ? route.params['invoiceId'] : null;
+        if (invoiceId) {
+            const invoiceLineItem = new InvoiceLineItem();
+            invoiceLineItem.invoiceNumber = invoiceId;
+            return of(invoiceLineItem);
+        }
         if (id) {
             return this.service.find(id).pipe(map((invoiceLineItem: HttpResponse<InvoiceLineItem>) => invoiceLineItem.body));
         }
@@ -38,6 +45,18 @@ export const invoiceLineItemRoute: Routes = [
     {
         path: 'invoice-line-item/:id/view',
         component: InvoiceLineItemDetailComponent,
+        resolve: {
+            invoiceLineItem: InvoiceLineItemResolve
+        },
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'mdApp.invoiceLineItem.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'invoice-line-item/:invoiceId/newLineItem',
+        component: InvoiceLineItemNewComponent,
         resolve: {
             invoiceLineItem: InvoiceLineItemResolve
         },

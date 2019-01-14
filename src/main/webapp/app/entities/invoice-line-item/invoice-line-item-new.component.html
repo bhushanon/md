@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-            <h2 id="jhi-invoice-line-item-heading" jhiTranslate="mdApp.invoiceLineItem.home.createOrEditLabel">Create or edit a Invoice Line Item</h2>
+            <h2 id="jhi-invoice-line-item-heading" jhiTranslate="mdApp.invoiceLineItem.home.createLabel">Create a Invoice Line Item</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!invoiceLineItem.id">
