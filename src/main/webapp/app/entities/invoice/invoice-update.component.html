@@ -1,0 +1,89 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-invoice-heading" jhiTranslate="mdApp.invoice.home.createOrEditLabel">Create or edit a Invoice</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!invoice.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="invoice.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mdApp.invoice.invoiceNumber" for="field_invoiceNumber">Invoice Number</label>
+                    <input type="number" class="form-control" name="invoiceNumber" id="field_invoiceNumber"
+                        [(ngModel)]="invoice.invoiceNumber" required min="100" jhiMin="100"/>
+                    <div [hidden]="!(editForm.controls.invoiceNumber?.dirty && editForm.controls.invoiceNumber?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.invoiceNumber?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.invoiceNumber?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 100 }">
+                            This field should be at least 100.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.invoiceNumber?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mdApp.invoice.invoiceDate" for="field_invoiceDate">Invoice Date</label>
+                    <div class="input-group">
+                        <input id="field_invoiceDate" type="text" class="form-control" name="invoiceDate" ngbDatepicker  #invoiceDateDp="ngbDatepicker" [(ngModel)]="invoice.invoiceDate"
+                        required/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="invoiceDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div [hidden]="!(editForm.controls.invoiceDate?.dirty && editForm.controls.invoiceDate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.invoiceDate?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mdApp.invoice.customerName" for="field_customerName">Customer Name</label>
+                    <input type="text" class="form-control" name="customerName" id="field_customerName"
+                        [(ngModel)]="invoice.customerName" required/>
+                    <div [hidden]="!(editForm.controls.customerName?.dirty && editForm.controls.customerName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.customerName?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mdApp.invoice.invoiceAmount" for="field_invoiceAmount">Invoice Amount</label>
+                    <input type="number" class="form-control" name="invoiceAmount" id="field_invoiceAmount"
+                        [(ngModel)]="invoice.invoiceAmount" required min="100" jhiMin="100"/>
+                    <div [hidden]="!(editForm.controls.invoiceAmount?.dirty && editForm.controls.invoiceAmount?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.invoiceAmount?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.invoiceAmount?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 100 }">
+                            This field should be at least 100.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.invoiceAmount?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+
+{
+    "mdApp": {
+        "invoiceLineItem" : {
+            "home": {
+                "title": "Invoice Line Items",
+                "createLabel": "Invoice Line Item-ஐ உருவாக்கு",
+                "createOrEditLabel": "Invoice Line Item -ஐ மாற்று (அ) உருவாக்கு"
+            },
+            "created": "Invoice Line Item புதிதாக உருவாக்கப்பட்டது, அடையாளம் {{ param }}",
+            "updated": "Invoice Line Item மாற்றப்பட்டது, அடையாளம்  {{ param }}",
+            "deleted": "A Invoice Line Item நீக்கப்பட்டது, அடையாளம {{ param }}",
+            "delete": {
+                "question": "நீக்குவதற்கு உறுதி செய் Invoice Line Item {{ id }}?"
+            },
+            "detail": {
+                "title": "Invoice Line Item"
+            },
+            "invoiceLineItemNumber": "Invoice Line Item Number",
+            "productName": "Product Name",
+            "productQuantity": "Product Quantity",
+            "productCost": "Product Cost",
+            "invoiceNumber": "Invoice Number"
+        }
+    }
+}

@@ -1,0 +1,101 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-invoice-line-item-heading" jhiTranslate="mdApp.invoiceLineItem.home.createOrEditLabel">Create or edit a Invoice Line Item</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!invoiceLineItem.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="invoiceLineItem.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mdApp.invoiceLineItem.invoiceLineItemNumber" for="field_invoiceLineItemNumber">Invoice Line Item Number</label>
+                    <input type="number" class="form-control" name="invoiceLineItemNumber" id="field_invoiceLineItemNumber"
+                        [(ngModel)]="invoiceLineItem.invoiceLineItemNumber" required/>
+                    <div [hidden]="!(editForm.controls.invoiceLineItemNumber?.dirty && editForm.controls.invoiceLineItemNumber?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.invoiceLineItemNumber?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.invoiceLineItemNumber?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mdApp.invoiceLineItem.productName" for="field_productName">Product Name</label>
+                    <input type="text" class="form-control" name="productName" id="field_productName"
+                        [(ngModel)]="invoiceLineItem.productName" required/>
+                    <div [hidden]="!(editForm.controls.productName?.dirty && editForm.controls.productName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.productName?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mdApp.invoiceLineItem.productQuantity" for="field_productQuantity">Product Quantity</label>
+                    <input type="number" class="form-control" name="productQuantity" id="field_productQuantity"
+                        [(ngModel)]="invoiceLineItem.productQuantity" required min="1" jhiMin="1"/>
+                    <div [hidden]="!(editForm.controls.productQuantity?.dirty && editForm.controls.productQuantity?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.productQuantity?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.productQuantity?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 1 }">
+                            This field should be at least 1.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.productQuantity?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mdApp.invoiceLineItem.productCost" for="field_productCost">Product Cost</label>
+                    <input type="number" class="form-control" name="productCost" id="field_productCost"
+                        [(ngModel)]="invoiceLineItem.productCost" required min="1" jhiMin="1"/>
+                    <div [hidden]="!(editForm.controls.productCost?.dirty && editForm.controls.productCost?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.productCost?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.productCost?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 1 }">
+                            This field should be at least 1.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.productCost?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mdApp.invoiceLineItem.invoiceNumber" for="field_invoiceNumber">Invoice Number</label>
+                    <select class="form-control" id="field_invoiceNumber" name="invoiceNumber" [(ngModel)]="invoiceLineItem.invoiceNumber"  required>
+                        <option *ngIf="!editForm.value.invoiceNumber" [ngValue]="null" selected></option>
+                        <option [ngValue]="invoiceOption.id === invoiceLineItem.invoiceNumber?.id ? invoiceLineItem.invoiceNumber : invoiceOption" *ngFor="let invoiceOption of invoices; trackBy: trackInvoiceById">{{invoiceOption.id}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.invoiceNumber?.dirty && editForm.controls.invoiceNumber?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.invoiceNumber?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+
+{
+    "mdApp": {
+        "invoiceLineItem" : {
+            "home": {
+                "title": "Invoice Line Items",
+                "createLabel": "नवीन Invoice Line Item तयार करा",
+                "createOrEditLabel": "Invoice Line Item तयार किंवा संपादित करा"
+            },
+            "created": "Invoice Line Item [identifier: {{ param }}] तयार आहे",
+            "updated": "Invoice Line Item [identifier: {{ param }}] सुधारित केले आहे",
+            "deleted": "Invoice Line Item [identifier: {{ param }}] हटविले आहे",
+            "delete": {
+                "question": "Invoice Line Item [id: {{ id }}] काढून टाकण्याबाबत पुष्टी?"
+            },
+            "detail": {
+                "title": "Invoice Line Item"
+            },
+            "invoiceLineItemNumber": "Invoice Line Item Number",
+            "productName": "Product Name",
+            "productQuantity": "Product Quantity",
+            "productCost": "Product Cost",
+            "invoiceNumber": "Invoice Number"
+        }
+    }
+}

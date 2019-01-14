@@ -1,0 +1,25 @@
+
+{
+    "mdApp": {
+        "invoice" : {
+            "home": {
+                "title": "Invoices",
+                "createLabel": "नया Invoice बनाएँ",
+                "createOrEditLabel": "Invoice बनाएँ या संपादित करें"
+            },
+            "created": "एक नया Invoice [identifier: {{ param }}] तैयार है",
+            "updated": "एक Invoice [identifier: {{ param }}] का अद्यतन हुआ है",
+            "deleted": "Invoice [identifier: {{ param }}] हटा दिया है",
+            "delete": {
+                "question": "Invoice [id: {{ id }}] हटाने की पुष्टि करें"
+            },
+            "detail": {
+                "title": "Invoice"
+            },
+            "invoiceNumber": "Invoice Number",
+            "invoiceDate": "Invoice Date",
+            "customerName": "Customer Name",
+            "invoiceAmount": "Invoice Amount"
+        }
+    }
+}
