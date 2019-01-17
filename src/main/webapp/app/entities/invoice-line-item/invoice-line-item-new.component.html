@@ -11,7 +11,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="mdApp.invoiceLineItem.invoiceLineItemNumber" for="field_invoiceLineItemNumber">Invoice Line Item Number</label>
-                    <input type="number" class="form-control" name="invoiceLineItemNumber" id="field_invoiceLineItemNumber"
+                    <input type="number" class="form-control form-control-lg" name="invoiceLineItemNumber" id="field_invoiceLineItemNumber"
                         [(ngModel)]="invoiceLineItem.invoiceLineItemNumber" required/>
                     <div [hidden]="!(editForm.controls.invoiceLineItemNumber?.dirty && editForm.controls.invoiceLineItemNumber?.invalid)">
                         <small class="form-text text-danger"
@@ -26,7 +26,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="mdApp.invoiceLineItem.productName" for="field_productName">Product Name</label>
-                    <input type="text" class="form-control" name="productName" id="field_productName"
+                    <input type="text" class="form-control form-control-lg" name="productName" id="field_productName"
                         [(ngModel)]="invoiceLineItem.productName" required/>
                     <div [hidden]="!(editForm.controls.productName?.dirty && editForm.controls.productName?.invalid)">
                         <small class="form-text text-danger"
@@ -37,7 +37,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="mdApp.invoiceLineItem.productQuantity" for="field_productQuantity">Product Quantity</label>
-                    <input type="number" class="form-control" name="productQuantity" id="field_productQuantity"
+                    <input type="number" class="form-control form-control-lg" name="productQuantity" id="field_productQuantity"
                         [(ngModel)]="invoiceLineItem.productQuantity" required min="1" jhiMin="1"/>
                     <div [hidden]="!(editForm.controls.productQuantity?.dirty && editForm.controls.productQuantity?.invalid)">
                         <small class="form-text text-danger"
@@ -76,9 +76,10 @@
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="mdApp.invoiceLineItem.invoiceNumber" for="field_invoiceNumber">Invoice Number</label>
+                
                     <select class="form-control" id="field_invoiceNumber" name="invoiceNumber" [(ngModel)]="invoiceLineItem.invoiceNumber"  required>
-                        <option *ngIf="!editForm.value.invoiceNumber" [ngValue]="null" selected></option>
-                        <option [ngValue]="invoiceOption.id === invoiceLineItem.invoiceNumber?.id ? invoiceLineItem.invoiceNumber : invoiceOption" *ngFor="let invoiceOption of invoices; trackBy: trackInvoiceById">{{invoiceOption.id}}</option>
+                        <option [ngValue]="invoiceOption.id === invoiceLineItem.invoiceNumber?.id ? invoiceLineItem.invoiceNumber : invoiceOption" 
+                        *ngFor="let invoiceOption of invoices; trackBy: trackInvoiceById" selected>{{invoiceOption.id}}</option>
                     </select>
                 </div>
                 <div [hidden]="!(editForm.controls.invoiceNumber?.dirty && editForm.controls.invoiceNumber?.invalid)">

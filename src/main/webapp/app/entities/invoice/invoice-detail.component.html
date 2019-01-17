@@ -37,6 +37,17 @@
         </div>
     </div>
     <div *ngIf="invoice">
+        <h2 id="page-heading">
+                <span jhiTranslate="mdApp.invoiceLineItem.home.title">Invoice Line Items</span>
+                <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-invoice-line-item" 
+                    [routerLink]="['/invoice-line-item/',invoice.id ,'newLineItem']">
+                    <fa-icon [icon]="'plus'"></fa-icon>
+                    <span  jhiTranslate="mdApp.invoiceLineItem.home.createLabel">
+                    Create new Invoice Line Item
+                    </span>
+                </button>
+        </h2>
+            
         <jhi-invoice-line-item [invoice]='invoice'></jhi-invoice-line-item>
     </div>
 </div>

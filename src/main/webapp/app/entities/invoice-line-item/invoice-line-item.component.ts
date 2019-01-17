@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
@@ -8,6 +8,7 @@ import { Principal } from 'app/core';
 
 import { ITEMS_PER_PAGE } from 'app/shared';
 import { InvoiceLineItemService } from './invoice-line-item.service';
+import { Invoice } from 'app/shared/model/invoice.model';
 
 @Component({
     selector: 'jhi-invoice-line-item',
@@ -24,6 +25,7 @@ export class InvoiceLineItemComponent implements OnInit, OnDestroy {
     queryCount: any;
     reverse: any;
     totalItems: number;
+    @Input() invoice: Invoice;
 
     constructor(
         private invoiceLineItemService: InvoiceLineItemService,
@@ -43,16 +45,30 @@ export class InvoiceLineItemComponent implements OnInit, OnDestroy {
     }
 
     loadAll() {
-        this.invoiceLineItemService
-            .query({
-                page: this.page,
-                size: this.itemsPerPage,
-                sort: this.sort()
-            })
-            .subscribe(
-                (res: HttpResponse<IInvoiceLineItem[]>) => this.paginateInvoiceLineItems(res.body, res.headers),
-                (res: HttpErrorResponse) => this.onError(res.message)
-            );
+        if ( this.invoice !== undefined && this.invoice.id !== undefined ) {
+            this.invoiceLineItemService
+                .query({
+                    page: this.page,
+                    size: this.itemsPerPage,
+                    sort: this.sort(),
+                    'invoiceNumberId.equals': this.invoice.id
+                })
+                .subscribe(
+                    (res: HttpResponse<IInvoiceLineItem[]>) => this.paginateInvoiceLineItems(res.body, res.headers),
+                    (res: HttpErrorResponse) => this.onError(res.message)
+                );
+        } else {
+            this.invoiceLineItemService
+                .query({
+                    page: this.page,
+                    size: this.itemsPerPage,
+                    sort: this.sort()
+                })
+                .subscribe(
+                    (res: HttpResponse<IInvoiceLineItem[]>) => this.paginateInvoiceLineItems(res.body, res.headers),
+                    (res: HttpErrorResponse) => this.onError(res.message)
+                );
+        }
     }
 
     reset() {

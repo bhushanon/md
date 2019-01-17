@@ -16,7 +16,7 @@ import { InvoiceService } from 'app/entities/invoice';
 export class InvoiceLineItemNewComponent implements OnInit {
     private _invoiceLineItem: IInvoiceLineItem;
     isSaving: boolean;
-
+    invoiceId: number;
     invoices: IInvoice[];
 
     constructor(
@@ -28,10 +28,16 @@ export class InvoiceLineItemNewComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
+        this.activatedRoute.params.subscribe(params => {
+            this.invoiceId = +params['invoiceId'];
+         });
+
         this.activatedRoute.data.subscribe(({ invoiceLineItem }) => {
             this.invoiceLineItem = invoiceLineItem;
         });
-        this.invoiceService.query().subscribe(
+        this.invoiceService.query({
+            'id.equals':	this.invoiceId
+        }).subscribe(
             (res: HttpResponse<IInvoice[]>) => {
                 this.invoices = res.body;
             },
